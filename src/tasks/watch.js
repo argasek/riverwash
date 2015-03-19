@@ -3,11 +3,11 @@
 'use strict';
 
 module.exports = {
-    options: {
-        livereload: true
-    },
-
     sass: {
+        options: {
+            livereload: false
+        },
+
         files: [
             '<%= config.styles %>/*.scss'
         ],
@@ -16,7 +16,7 @@ module.exports = {
 
     livereload: {
         options: {
-            livereload: '<%= connect.options.livereload %>'
+            livereload: true
         },
         files: [
             '<%= config.app %>/index.html',

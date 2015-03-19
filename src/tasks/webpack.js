@@ -51,6 +51,7 @@ module.exports = {
 
 
     dev: {
+        watch: true,
         plugins: [
             new webpack.optimize.CommonsChunkPlugin('common', 'common.js')
         ]
