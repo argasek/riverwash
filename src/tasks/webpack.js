@@ -1,6 +1,7 @@
 'use strict';
 
 var webpack = require('webpack');
+var comments = require('uglify-save-license');
 
 module.exports = {
     options: {
@@ -44,7 +45,8 @@ module.exports = {
             colors: true,
             modules: false,
             reasons: true
-        }
+        },
+        progress: false
     },
 
 
@@ -56,9 +58,20 @@ module.exports = {
 
     dist: {
         plugins: [
-            new webpack.optimize.CommonsChunkPlugin('common', 'common.js')
+            new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
+            new webpack.optimize.UglifyJsPlugin({
+                compress: {
+                    warnings: false,
+                    screw_ie8: true
+                },
+                mangle: {
+                    screw_ie8: true
+                },
+                beautify: false,
+                comments: comments
+            })
+
         ]
     }
-
 
 };

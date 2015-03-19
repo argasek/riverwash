@@ -40,6 +40,7 @@ module.exports = function(grunt) {
                 'clean:dev',
                 'jshint:dev',
                 'compass:dev',
+                'autoprefixer',
                 'webpack:dev',
                 'connect:dev'
             ]);
@@ -48,6 +49,7 @@ module.exports = function(grunt) {
                 'clean:dist',
                 'jshint:dist',
                 'compass:dist',
+                'autoprefixer',
                 'webpack:dist',
                 'connect:dist'
             ]);
