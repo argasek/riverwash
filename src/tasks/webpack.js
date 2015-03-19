@@ -57,6 +57,11 @@ module.exports = {
     },
 
     dist: {
+        output: {
+            path: '<%= config.dist %>/scripts',
+            filename: '[name].js'
+        },
+
         plugins: [
             new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
             new webpack.optimize.UglifyJsPlugin({

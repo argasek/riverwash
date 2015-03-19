@@ -33,24 +33,38 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('serve', 'Compile and run', function(target) {
+    grunt.registerTask('build', 'Compile', function(target) {
         target = target || 'dev';
         if (target === 'dev') {
             grunt.task.run([
                 'clean:dev',
                 'jshint:dev',
                 'compass:dev',
-                'autoprefixer',
-                'webpack:dev',
-                'connect:dev'
+                'autoprefixer:dev',
+                'webpack:dev'
             ]);
         } else {
             grunt.task.run([
                 'clean:dist',
                 'jshint:dist',
                 'compass:dist',
-                'autoprefixer',
-                'webpack:dist',
+                'autoprefixer:dist',
+                'copy:dist',
+                'webpack:dist'
+            ]);
+        }
+    });
+
+    grunt.registerTask('serve', 'Compile and run', function(target) {
+        target = target || 'dev';
+        if (target === 'dev') {
+            grunt.task.run([
+                'build:dev',
+                'connect:dev'
+            ]);
+        } else {
+            grunt.task.run([
+                'build:dist',
                 'connect:dist'
             ]);
         }
