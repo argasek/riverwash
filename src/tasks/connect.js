@@ -17,6 +17,8 @@ module.exports = {
 
     dev: {
         options: {
+            livereload: true,
+            keepalive: false,
             middleware: function (connect, options) {
                 var middleWares = [];
                 var directory = options.directory || options.base[options.base.length - 1];

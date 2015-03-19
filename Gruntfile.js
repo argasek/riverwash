@@ -38,7 +38,7 @@ module.exports = function(grunt) {
         if (target === 'dev') {
             grunt.task.run([
                 'clean:dev',
-                'jshint:dev',
+                'jshint',
                 'compass:dev',
                 'autoprefixer:dev',
                 'webpack:dev'
@@ -46,11 +46,14 @@ module.exports = function(grunt) {
         } else {
             grunt.task.run([
                 'clean:dist',
-                'jshint:dist',
+                'jshint',
                 'compass:dist',
-                'autoprefixer:dist',
+                'useminPrepare',
                 'copy:dist',
-                'webpack:dist'
+                'cssmin:generated',
+                'autoprefixer:dist',
+                'webpack:dist',
+                'usemin'
             ]);
         }
     });
@@ -60,7 +63,8 @@ module.exports = function(grunt) {
         if (target === 'dev') {
             grunt.task.run([
                 'build:dev',
-                'connect:dev'
+                'connect:dev',
+                'watch'
             ]);
         } else {
             grunt.task.run([
