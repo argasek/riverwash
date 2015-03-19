@@ -1,0 +1,16 @@
+{
+  "bitwise": true,
+  "browser": true,
+  "camelcase": false,
+  "curly": true,
+  "noarg": true,
+  "node": true,
+  "nonew": true,
+  "noempty": true,
+  "eqeqeq": true,
+  "strict": true,
+  "undef": true,
+  "unused": true,
+  "trailing": true
+}
+
