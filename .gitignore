@@ -1,5 +1,5 @@
 .idea
 .tmp
 .sass-cache
-dist
+dist/*
 node_modules
