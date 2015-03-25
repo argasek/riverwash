@@ -2,6 +2,12 @@
 
 var webpack = require('webpack');
 var comments = require('uglify-save-license');
+var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
+
+var plugins = [
+    new ngAnnotatePlugin({ add: true }),
+    new webpack.optimize.CommonsChunkPlugin('common', 'common.js')
+];
 
 module.exports = {
     options: {
@@ -52,9 +58,7 @@ module.exports = {
 
     dev: {
         watch: true,
-        plugins: [
-            new webpack.optimize.CommonsChunkPlugin('common', 'common.js')
-        ]
+        plugins: plugins
     },
 
     dist: {
@@ -63,21 +67,16 @@ module.exports = {
             filename: '[name].js'
         },
 
-        plugins: [
-            new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
-            new webpack.optimize.UglifyJsPlugin({
-                compress: {
-                    warnings: false,
-                    screw_ie8: true
-                },
-                mangle: {
-                    screw_ie8: true
-                },
-                beautify: false,
-                comments: comments
-            })
-
-        ]
+        plugins: plugins.concat(new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false,
+                screw_ie8: true
+            },
+            mangle: {
+                screw_ie8: true
+            },
+            beautify: false,
+            comments: comments
+        }))
     }
-
 };
