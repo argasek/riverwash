@@ -8,6 +8,8 @@ var crossOriginMiddleware = function(request, response, next) {
     return next();
 };
 
+var rewriteMiddleware = modRewrite(['^[^\\.]*$ /index.html [L]']);
+
 module.exports = {
     options: {
         open: true,
@@ -28,7 +30,7 @@ module.exports = {
                 // CORS handling
                 middleWares.push(crossOriginMiddleware);
 
-                middleWares.push(modRewrite(['^[^\\.]*$ /index.html [L]']));
+                middleWares.push(rewriteMiddleware);
 
                 // We try to search files (like CSS, JS, etc.) in ./.tmp first, then in ./app
                 middleWares.push(
@@ -47,7 +49,16 @@ module.exports = {
 
     dist: {
         options: {
-            base: '<%= config.dist %>'
+            base: '<%= config.dist %>',
+            middleware: function (connect, options) {
+                var middleWares = [];
+                var directory = options.directory || options.base[options.base.length - 1];
+
+                middleWares.push(rewriteMiddleware);
+                middleWares.push(connect.static(directory));
+
+                return middleWares;
+            }
         }
     }
 };

@@ -6,11 +6,21 @@ body {
   font-family: "Oswald", sans-serif;
   text-rendering: optimizeLegibility;
   background-color: #000c18;
+  color: #abd;
   margin: 0;
 }
 
 h1 {
   font-size: 2.5em;
+  color: #f0f8ff;
+}
+
+h2 {
+  color: #f2faff;
+}
+
+h1, h2 {
+  text-shadow: 1px 1px 2px rgba(100, 150, 200, 1);
 }
 
 a {
@@ -43,11 +53,19 @@ a:hover {
   border-right-width: 0;
   opacity: 0.8;
   text-align: center;
-  color: #abc;
   box-shadow: 0px 0px 38px 0px rgba(0,0,0,0.85);
   > h1 {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     color: #fff;
+    text-shadow: none;
   }
+}
+
+.navbar-main {
+  display: none;
+}
+
+article.content {
+  padding: 0 2em;
 }
