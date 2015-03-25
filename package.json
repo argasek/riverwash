@@ -19,6 +19,7 @@
     "jquery": "^2.1.3"
   },
   "devDependencies": {
+    "connect-modrewrite": "^0.7.11",
     "exports-loader": "^0.6.2",
     "expose-loader": "^0.6.0",
     "grunt": "^0.4.5",

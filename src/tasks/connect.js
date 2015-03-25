@@ -1,5 +1,7 @@
 'use strict';
 
+var modRewrite = require('connect-modrewrite');
+
 var crossOriginMiddleware = function(request, response, next) {
     response.setHeader('Access-Control-Allow-Origin', '*');
     response.setHeader('Access-Control-Allow-Methods', '*');
@@ -25,6 +27,8 @@ module.exports = {
 
                 // CORS handling
                 middleWares.push(crossOriginMiddleware);
+
+                middleWares.push(modRewrite(['^[^\\.]*$ /index.html [L]']));
 
                 // We try to search files (like CSS, JS, etc.) in ./.tmp first, then in ./app
                 middleWares.push(
