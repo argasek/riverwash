@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-  font-family: "Oswald", sans-serif;
+  font-family: "Open Sans", sans-serif;
   text-rendering: optimizeLegibility;
   background-color: #000c18;
   color: #abd;
@@ -20,6 +20,7 @@ h2 {
 }
 
 h1, h2 {
+  font-family: "Oswald", sans-serif;
   text-shadow: 1px 1px 2px rgba(100, 150, 200, 1);
 }
 
@@ -46,6 +47,7 @@ a:hover {
 }
 
 .ui-info {
+  font-family: "Oswald", sans-serif;
   padding: 1em;
   background: #000000;
   border: 1px solid #fff;
