@@ -20,6 +20,7 @@ module.exports = {
         },
         files: [
             '<%= config.app %>/index.html',
+            '<%= config.app %>/pages/{,*/}*.html',
             '<%= config.app %>/images/{,*/}*.*',
             '<%= config.tmp %>/styles/*.css',
             '<%= config.tmp %>/scripts/*.js'

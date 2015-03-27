@@ -15,7 +15,8 @@ module.exports = {
         relativeAssets: false,
         assetCacheBuster: false,
         raw: 'Sass::Script::Number.precision = 10\n',
-        outputStyle: 'compressed'
+        outputStyle: 'compressed',
+        importPath: '<%= config.modules %>/bootstrap-sass/assets/stylesheets'
     },
     dev: {
         options: {

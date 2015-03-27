@@ -29,6 +29,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
 
     defaultLanguage = getDefaultLanguage();
 
+    $urlRouterProvider.when('/', '/' + defaultLanguage);
     $urlRouterProvider.otherwise('/' + defaultLanguage);
 
     function languageTemplateUrl(template) {
@@ -42,15 +43,17 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
     $stateProvider.state('app', {
         abstract: true,
         url: '/{lang}',
-        template: '<ui-view></ui-view>'
+        templateUrl: '/pages/inner.html',
+        controller: 'applicationController'
     });
 
-    $stateProvider.state('app.root', {
+    $stateProvider.state('app.home', {
         url: '',
         templateUrl: languageTemplateUrl('home')
     });
 
     var states = [
+        'about',
         'location',
         'schedule',
         'tickets',
@@ -58,12 +61,17 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         'competitions'
     ];
 
-    states.forEach(function(state) {
-        $stateProvider.state('app.' + state, { url: '/' + state, templateUrl: languageTemplateUrl(state) });
+    states.forEach(function (state) {
+        $stateProvider.state('app.' + state, {url: '/' + state, templateUrl: languageTemplateUrl(state)});
     });
-
 });
 
-application.controller('applicationController', function ($scope, $stateParams) {
-    return $scope.lang = $stateParams.lang;
+application.controller('applicationController', function ($scope, $stateParams, $state, $rootScope) {
+    $rootScope.setLanguage = function(lang) {
+        $state.go($state.current, { lang: lang }, {
+            location: true,
+            reload: true,
+            inherit: true
+        }).then(function() { });
+    };
 });

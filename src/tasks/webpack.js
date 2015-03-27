@@ -36,12 +36,20 @@ module.exports = {
                 {
                     test: /\.html$/,
                     loader: 'html-loader'
+                },
+                {
+                    test: /bootstrap\.js$/,
+                    loader: 'imports?jQuery=jquery'
                 }
+
             ],
             noParse: /\.min\.js$/
         },
 
         resolve: {
+            alias: {
+                'bootstrap': 'bootstrap-sass/assets/javascripts/bootstrap'
+            },
             modulesDirectories: [
                 '<%= config.modules %>'
             ]
