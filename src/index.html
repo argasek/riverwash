@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="styles/layout.css">
     <!-- endbuild -->
 </head>
-<body>
+<body ng-class="{ home: $state.includes('app.home') }">
 
 <ui-view class="container-fluid ui-view-container" autoscroll="false"></ui-view>
 

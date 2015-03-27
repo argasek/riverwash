@@ -75,3 +75,11 @@ application.controller('applicationController', function ($scope, $stateParams, 
         }).then(function() { });
     };
 });
+
+application.run(['$rootScope', '$state', '$stateParams',
+    function ($rootScope, $state, $stateParams) {
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams;
+    }
+]);
+
