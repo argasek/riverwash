@@ -1,6 +1,6 @@
 var angular = require('angular');
 
-var application = angular.module('Riverwash.app', ['ui.router']);
+var application = angular.module('Riverwash.app', ['ui.router', 'uiGmapgoogle-maps']);
 
 function getDefaultLanguage() {
     var androidLang;
@@ -67,6 +67,11 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
 });
 
 application.controller('applicationController', function ($scope, $stateParams, $state, $rootScope) {
+    $scope.map = { center: { latitude: 50.051001, longitude: 19.949772 }, zoom: 16 };
+    $scope.marker = {
+        id: 'Caryca',
+        coords: { latitude: 50.051001, longitude: 19.949772}
+    };
     $rootScope.setLanguage = function(lang) {
         $state.go($state.current, { lang: lang }, {
             location: true,
