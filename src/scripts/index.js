@@ -1,33 +1,70 @@
 var angular = require('angular');
 
-var application = angular.module('Riverwash.app', ['ui.router', 'uiGmapgoogle-maps']);
+var application = angular.module('Riverwash.app', ['ui.router', 'uiGmapgoogle-maps', 'pascalprecht.translate']);
 
-function getDefaultLanguage() {
-    var androidLang;
-    var defaultLang;
-    var isPolish;
+// tries to determine the browsers language
+var getDefaultLanguage = function ($windowProvider) {
+    var nav = $windowProvider.$get().navigator,
+        browserLanguagePropertyKeys = ['language', 'browserLanguage', 'systemLanguage', 'userLanguage'],
+        i,
+        language;
 
-    // works for earlier version of Android (2.3.x)
-    if (navigator && navigator.userAgent && (androidLang = navigator.userAgent.match(/android.*\W(\w\w)-(\w\w)\W/i))) {
-        defaultLang = androidLang[1];
-    } else {
-        // works for iOS and Android 4.x
-        defaultLang = navigator.userLanguage || navigator.language;
+    // support for HTML 5.1 "navigator.languages"
+    if (angular.isArray(nav.languages)) {
+        for (i = 0; i < nav.languages.length; i++) {
+            language = nav.languages[i];
+            if (language && language.length) {
+                return language;
+            }
+        }
     }
 
-    isPolish = ['pl_PL', 'pl'].indexOf(defaultLang) !== -1;
-    defaultLang = (isPolish ? 'pl' : 'en');
+    // support for other well known properties in browsers
+    for (i = 0; i < browserLanguagePropertyKeys.length; i++) {
+        language = nav[browserLanguagePropertyKeys[i]];
+        if (language && language.length) {
+            return language;
+        }
+    }
 
-    return defaultLang;
-}
+    return 'en';
+};
 
-application.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $urlMatcherFactoryProvider) {
+application.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $urlMatcherFactoryProvider, $translateProvider, $windowProvider) {
     var defaultLanguage;
 
     $locationProvider.html5Mode(true);
     $urlMatcherFactoryProvider.strictMode(false);
 
-    defaultLanguage = getDefaultLanguage();
+    defaultLanguage = getDefaultLanguage($windowProvider).substring(0, 2);
+
+    $translateProvider.translations('en', {
+        HOME: 'Home',
+        ABOUT: 'About',
+        COMPETITIONS: 'Competitions & rules',
+        SCHEDULE: 'Schedule',
+        TICKETS: 'Tickets',
+        TRAVELLING: 'Travelling & Accommodation',
+        CONTACT: 'Contact'
+    });
+    $translateProvider.translations('pl', {
+        HOME: 'Start',
+        ABOUT: 'O party',
+        COMPETITIONS: 'Compoty i zasady',
+        SCHEDULE: 'Plan imprezy',
+        TICKETS: 'Bilety',
+        TRAVELLING: 'Lokalizacja i nocleg',
+        CONTACT: 'Kontakt'
+    });
+
+    $translateProvider.registerAvailableLanguageKeys(['en', 'pl'], {
+        'en_US': 'en',
+        'en_UK': 'en',
+        'pl_PL': 'pl'
+    });
+
+    $translateProvider.fallbackLanguage('en');
+    $translateProvider.preferredLanguage(defaultLanguage);
 
     $urlRouterProvider.when('/', '/' + defaultLanguage);
     $urlRouterProvider.otherwise('/' + defaultLanguage);
@@ -54,7 +91,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
 
     var states = [
         'about',
-        'location',
+        'contact',
         'schedule',
         'tickets',
         'travelling',
@@ -66,25 +103,35 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
     });
 });
 
-application.controller('applicationController', function ($scope, $stateParams, $state, $rootScope) {
-    $scope.map = { center: { latitude: 50.051001, longitude: 19.949772 }, zoom: 16 };
+application.controller('applicationController', function ($scope, $stateParams, $state, $rootScope, $translate) {
+    var coords = {
+        latitude: 50.051001,
+        longitude: 19.949772
+    };
+
+    $scope.map = { center: coords, zoom: 16 };
     $scope.marker = {
         id: 'Caryca',
-        coords: { latitude: 50.051001, longitude: 19.949772}
+        coords: coords
     };
+
+    $translate.use($stateParams.lang);
+
     $rootScope.setLanguage = function(lang) {
+        $translate.use(lang);
         $state.go($state.current, { lang: lang }, {
             location: true,
             reload: true,
             inherit: true
-        }).then(function() { });
+        }).then(function() {
+        });
     };
 });
 
-application.run(['$rootScope', '$state', '$stateParams',
+application.run(
     function ($rootScope, $state, $stateParams) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
     }
-]);
+);
 
