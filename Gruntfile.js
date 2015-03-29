@@ -53,6 +53,7 @@ module.exports = function(grunt) {
                 'cssmin:generated',
                 'autoprefixer:dist',
                 'webpack:dist',
+                'filerev',
                 'usemin'
             ]);
         }
