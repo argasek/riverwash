@@ -142,7 +142,7 @@ a[ui-sref] {
 }
 
 .content {
-  padding: 0 1em 2em 1em;
+  padding: 0 0 2em 0;
   p {
     text-align: justify;
   }
@@ -159,6 +159,9 @@ a[ui-sref] {
 }
 
 @media (min-width: 1024px) {
+  .content {
+    padding: 0 1em 2em 1em;
+  }
   .angular-google-map-container {
     width: 80%;
     height: 400px;
