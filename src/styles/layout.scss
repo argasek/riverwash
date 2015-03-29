@@ -117,7 +117,6 @@ a[ui-sref] {
 
 .ui-view-container {
   padding-top: 48px;
-  width: 100%;
   display: flex;
   align-items: stretch;
   min-height: 100%;
@@ -165,5 +164,18 @@ a[ui-sref] {
   .angular-google-map-container {
     width: 80%;
     height: 400px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .navbar-inverse {
+    background-color: rgba(0, 0, 20, 0.85);
+  }
+  .ui-view-container {
+    padding-left: 0;
+    padding-right: 0;
+ }
+  .ui-view-inner {
+    border: none;
   }
 }

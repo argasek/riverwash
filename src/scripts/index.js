@@ -128,6 +128,20 @@ application.controller('applicationController', function ($scope, $stateParams, 
     };
 });
 
+application.directive('navbarMainCollapse', ['$rootScope', function ($rootScope) {
+    return {
+        restrict: 'C',
+        link: function (scope, element) {
+            var navbar = element.find('.navbar-collapse');
+            $rootScope.$on('$stateChangeSuccess', function () {
+                if (navbar.hasClass('collapse in')) {
+                    navbar.collapse('hide');
+                }
+            });
+        }
+    };
+}]);
+
 application.run(
     function ($rootScope, $state, $stateParams) {
         $rootScope.$state = $state;
