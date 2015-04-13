@@ -30,6 +30,10 @@ var getDefaultLanguage = function ($windowProvider) {
     return 'en';
 };
 
+var getSupportedLanguage = function(lang, defaultLanguage) {
+    return (['en', 'pl'].indexOf(lang) !== -1 ? lang : defaultLanguage);
+};
+
 application.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $urlMatcherFactoryProvider, $translateProvider, $windowProvider) {
     var defaultLanguage;
 
@@ -37,6 +41,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
     $urlMatcherFactoryProvider.strictMode(false);
 
     defaultLanguage = getDefaultLanguage($windowProvider).substring(0, 2);
+    defaultLanguage = getSupportedLanguage(defaultLanguage, 'en');
 
     $translateProvider.translations('en', {
         HOME: 'Home',
@@ -71,8 +76,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
 
     function languageTemplateUrl(template) {
         return function ($stateParams) {
-            var isSupportedLanguage = ['en', 'pl'].indexOf($stateParams.lang) !== -1;
-            var lang = (isSupportedLanguage ? $stateParams.lang : defaultLanguage);
+            var lang = getSupportedLanguage($stateParams.lang, defaultLanguage);
             return '/pages/' + lang + '/' + template + '.html';
         }
     }
