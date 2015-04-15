@@ -115,8 +115,11 @@ application.controller('applicationController', function ($scope, $stateParams, 
 
     $scope.map = { center: coords, zoom: 16 };
     $scope.marker = {
-        id: 'Caryca',
-        coords: coords
+        id: 0,
+        coords: {
+            latitude: 50.051001,
+            longitude: 19.949772
+        }
     };
 
     $translate.use($stateParams.lang);
