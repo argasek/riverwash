@@ -109,16 +109,16 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
 
 application.controller('applicationController', function ($scope, $stateParams, $state, $rootScope, $translate) {
     var coords = {
-        latitude: 50.051001,
-        longitude: 19.949772
+        latitude: 50.059667,
+        longitude: 19.957932
     };
 
     $scope.map = { center: coords, zoom: 16 };
     $scope.marker = {
         id: 0,
         coords: {
-            latitude: 50.051001,
-            longitude: 19.949772
+            latitude: 50.059667,
+            longitude: 19.957932
         }
     };
 
