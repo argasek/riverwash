@@ -30,7 +30,7 @@ var getDefaultLanguage = function ($windowProvider) {
     return 'en';
 };
 
-var getSupportedLanguage = function(lang, defaultLanguage) {
+var getSupportedLanguage = function (lang, defaultLanguage) {
     return (['en', 'pl'].indexOf(lang) !== -1 ? lang : defaultLanguage);
 };
 
@@ -68,6 +68,8 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         'pl_PL': 'pl'
     });
 
+    $translateProvider.useSanitizeValueStrategy('escape');
+
     $translateProvider.fallbackLanguage('en');
     $translateProvider.preferredLanguage(defaultLanguage);
 
@@ -94,7 +96,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
     });
 
     var states = [
-        'about',
+        //'about',
         'contact',
         'schedule',
         'tickets',
@@ -105,6 +107,24 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
     states.forEach(function (state) {
         $stateProvider.state('app.' + state, {url: '/' + state, templateUrl: languageTemplateUrl(state)});
     });
+
+    $stateProvider.state('app.about', {
+        url: '/' + 'about',
+        templateUrl: languageTemplateUrl('about'),
+        controller: function ($scope, $timeout) {
+            console.info('yay');
+            var $container = $('.gallery');
+            $container.find('img').addClass('animation-fade');
+            $timeout(function() {
+                $container.imagesLoaded( function() {
+                    console.info($container.find('img'));
+                    $container.find('img').addClass('animation-faded');
+                });
+
+            });
+        }
+    });
+
 });
 
 application.controller('applicationController', function ($scope, $stateParams, $state, $rootScope, $translate) {
@@ -113,7 +133,19 @@ application.controller('applicationController', function ($scope, $stateParams, 
         longitude: 19.957932
     };
 
-    $scope.map = { center: coords, zoom: 16 };
+    var i, pad;
+
+    $scope.bricks = [];
+
+    for (i = 1; i <= 38; i++) {
+        pad = ('000' + i).slice(-3);
+        $scope.bricks.push({
+            src: 'images/photos/' + pad + '.jpg'
+        });
+    }
+
+
+    $scope.map = {center: coords, zoom: 16};
     $scope.marker = {
         id: 0,
         coords: {
@@ -124,13 +156,13 @@ application.controller('applicationController', function ($scope, $stateParams, 
 
     $translate.use($stateParams.lang);
 
-    $rootScope.setLanguage = function(lang) {
+    $rootScope.setLanguage = function (lang) {
         $translate.use(lang);
-        $state.go($state.current, { lang: lang }, {
+        $state.go($state.current, {lang: lang}, {
             location: true,
             reload: true,
             inherit: true
-        }).then(function() {
+        }).then(function () {
         });
     };
 });

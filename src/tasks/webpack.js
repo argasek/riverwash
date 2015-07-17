@@ -27,12 +27,16 @@ module.exports = {
             loaders: [
                 {
                     test: require.resolve('angular'),
-                    loader: 'imports?jquery!exports?window.angular'
+                    loader: 'exports?window.angular'
                 },
-                {
-                    test: require.resolve('jquery'),
-                    loader: 'expose?jQuery'
-                },
+                //{
+                //    test: require.resolve('angular'),
+                //    loader: 'imports?jquery!exports?window.angular'
+                //},
+                //{
+                //    test: require.resolve('jquery'),
+                //    loader: 'expose?jQuery'
+                //},
                 {
                     test: /\.html$/,
                     loader: 'html-loader'
@@ -40,15 +44,23 @@ module.exports = {
                 {
                     test: /bootstrap\.js$/,
                     loader: 'imports?jQuery=jquery'
+                },
+                {
+                    test: /masonry-layout/,
+                    loader: 'imports?define=>false&this=>window'
                 }
-
+                //{
+                //    test: /imagesloaded/,
+                //    loader: 'imports?define=>false&this=>window'
+                //}
             ],
             noParse: /\.min\.js$/
         },
 
         resolve: {
             alias: {
-                'bootstrap': 'bootstrap-sass/assets/javascripts/bootstrap'
+                'bootstrap': 'bootstrap-sass/assets/javascripts/bootstrap',
+                'imagesloaded': 'imagesloaded/imagesloaded.pkgd'
             },
             modulesDirectories: [
                 '<%= config.modules %>'

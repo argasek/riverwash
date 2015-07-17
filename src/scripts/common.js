@@ -4,3 +4,6 @@ require('angular-ui-router');
 require('angular-google-maps');
 require('bootstrap/collapse');
 require('bootstrap/transition');
+//require('./angular-masonry');
+//require('./angular-deckgrid');
+

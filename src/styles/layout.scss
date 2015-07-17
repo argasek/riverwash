@@ -145,6 +145,9 @@ a[ui-sref] {
   p {
     text-align: justify;
   }
+  p.text-center {
+    text-align: center;
+  }
 }
 
 .angular-google-map-container {
@@ -174,8 +177,41 @@ a[ui-sref] {
   .ui-view-container {
     padding-left: 0;
     padding-right: 0;
- }
+  }
   .ui-view-inner {
     border: none;
   }
+}
+
+.gallery {
+  img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    border: 1px solid #246;
+    -ms-interpolation-mode: bicubic;
+  }
+  .row {
+    img { margin-top: 15px; }
+    img:first-child {
+      margin-top: 0;
+    }
+  }
+  margin-bottom: 10px;
+}
+
+.gallery-credits {
+  color: #424D65;
+}
+
+.animation-fade {
+  opacity:0;
+}
+
+.animation-faded {
+  opacity:1;
+}
+
+.animation-faded {
+  transition: opacity 1s linear .2s;
 }
