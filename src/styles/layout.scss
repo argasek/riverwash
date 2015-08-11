@@ -215,3 +215,32 @@ a[ui-sref] {
 .animation-faded {
   transition: opacity 1s linear .2s;
 }
+
+.event {
+  color: darkcyan;
+}
+
+.deadline {
+  color: #d21352;
+}
+
+.compo {
+  color: #00e627;
+}
+
+.djset {
+  color: #c4b300;
+}
+
+.timetable {
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+  border: 0;
+  td {
+    vertical-align: top;
+    padding: 0.1em 0.75em;
+  }
+  td:nth-child(2) {
+    column-width: 5em;
+  }
+}
