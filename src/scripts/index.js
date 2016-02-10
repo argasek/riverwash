@@ -128,9 +128,11 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
 });
 
 application.controller('applicationController', function ($scope, $stateParams, $state, $rootScope, $translate) {
+    var latitude = 50.259678;
+    var longitude = 19.0168093;
     var coords = {
-        latitude: 50.059667,
-        longitude: 19.957932
+        latitude: latitude,
+        longitude: longitude
     };
 
     var i, pad;
@@ -149,8 +151,8 @@ application.controller('applicationController', function ($scope, $stateParams, 
     $scope.marker = {
         id: 0,
         coords: {
-            latitude: 50.059667,
-            longitude: 19.957932
+            latitude: latitude,
+            longitude: longitude
         }
     };
 
