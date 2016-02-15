@@ -44,10 +44,6 @@ module.exports = {
                 {
                     test: /bootstrap\.js$/,
                     loader: 'imports?jQuery=jquery'
-                },
-                {
-                    test: /masonry-layout/,
-                    loader: 'imports?define=>false&this=>window'
                 }
                 //{
                 //    test: /imagesloaded/,

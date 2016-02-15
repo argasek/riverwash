@@ -1,6 +1,8 @@
 'use strict';
 
 var modRewrite = require('connect-modrewrite');
+var connectStatic = require('serve-static');
+var connectDirectory = require('serve-index');
 
 var crossOriginMiddleware = function(request, response, next) {
     response.setHeader('Access-Control-Allow-Origin', '*');
@@ -34,13 +36,13 @@ module.exports = {
 
                 // We try to search files (like CSS, JS, etc.) in ./.tmp first, then in ./app
                 middleWares.push(
-                    connect.static(options.config.tmp),
-                    connect.static(options.config.app),
-                    connect().use('/node_modules', connect.static('./' + options.config.modules))
+                    connectStatic(options.config.tmp),
+                    connectStatic(options.config.app),
+                    connect().use('/node_modules', connectStatic('./' + options.config.modules))
                 );
 
                 // Allow to browse directory
-                middleWares.push(connect.directory(directory));
+                middleWares.push(connectDirectory(directory));
 
                 return middleWares;
             }
@@ -55,7 +57,7 @@ module.exports = {
                 var directory = options.directory || options.base[options.base.length - 1];
 
                 middleWares.push(rewriteMiddleware);
-                middleWares.push(connect.static(directory));
+                middleWares.push(connectStatic(directory));
 
                 return middleWares;
             }

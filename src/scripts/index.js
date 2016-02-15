@@ -1,8 +1,8 @@
 var angular = require('angular');
 
-var application = angular.module('Riverwash.app', ['ui.router', 'uiGmapgoogle-maps', 'pascalprecht.translate']);
+var application = angular.module('Riverwash.app', ['ui.router', 'uiGmapgoogle-maps', 'nemLogging', 'pascalprecht.translate']);
 
-// tries to determine the browsers language
+// tries to determine the browser's language
 var getDefaultLanguage = function ($windowProvider) {
     var nav = $windowProvider.$get().navigator,
         browserLanguagePropertyKeys = ['language', 'browserLanguage', 'systemLanguage', 'userLanguage'],
@@ -112,15 +112,13 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         url: '/' + 'about',
         templateUrl: languageTemplateUrl('about'),
         controller: function ($scope, $timeout) {
-            console.info('yay');
-            var $container = $('.gallery');
-            $container.find('img').addClass('animation-fade');
-            $timeout(function() {
-                $container.imagesLoaded( function() {
-                    console.info($container.find('img'));
-                    $container.find('img').addClass('animation-faded');
+            var $container = $('.content');
+            var images = $container.find('img');
+            images.addClass('animation-fade');
+            $timeout(function () {
+                $container.imagesLoaded(function () {
+                    images.addClass('animation-faded');
                 });
-
             });
         }
     });
