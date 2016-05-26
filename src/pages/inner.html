@@ -13,9 +13,18 @@
             <ul class="nav navbar-nav">
                 <li ui-sref-active="active"><a ui-sref="app.home" translate="HOME">Home</a></li>
                 <li ui-sref-active="active"><a ui-sref="app.about" translate="ABOUT">About</a></li>
-                <li ui-sref-active="active"><a ui-sref="app.competitions" translate="COMPETITIONS">Competitions &amp; rules</a></li>
-                <li ui-sref-active="active"><a ui-sref="app.schedule" translate="SCHEDULE">Schedule</a></li>
-                <li ui-sref-active="active"><a ui-sref="app.tickets" translate="TICKETS">Tickets</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span translate="PARTY">Party</span> <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li ui-sref-active="active"><a ui-sref="app.competitions" translate="COMPETITIONS">Competitions &amp; rules</a></li>
+                        <li ui-sref-active="active"><a ui-sref="app.schedule" translate="SCHEDULE">Schedule</a></li>
+                        <li ui-sref-active="active"><a ui-sref="app.tickets" translate="TICKETS">Tickets</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Register &amp; vote!</li>
+                        <li><a href="#">Participants</a></li>
+                        <li><a href="#">Scener of The Year!</a></li>
+                    </ul>
+                </li>
                 <li ui-sref-active="active"><a ui-sref="app.travelling" translate="TRAVELLING">Travelling &amp; Accommodation</a></li>
                 <li ui-sref-active="active"><a ui-sref="app.contact" translate="CONTACT">Contact</a></li>
             </ul>

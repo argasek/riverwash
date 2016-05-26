@@ -24,3 +24,56 @@ $grid-float-breakpoint: 1024px;
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
 
+.dropdown-menu {
+  background-color: #251616
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: #251616;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu > .active > a{
+  background-color: #342121;
+  color: #fff;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus,
+.navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
+  background-color: #681311;
+}
+
+.navbar-inverse {
+  background-image: none;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  background-image: none;
+}
+
+.dropdown-menu > li > a {
+  color: #9d9d9d
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  color: #fff
+}
+
+.dropdown-menu {
+  border: 1px solid rgba(0, 0, 0, 0.85);
+  box-shadow: 0px 0px 38px 0px rgba(0, 0, 0, 0.85);
+  border-top: 0
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
+.dropdown-menu > .active > a {
+  background-color: #632;
+  color: #fff;
+}
+
+.dropdown-menu .divider {
+  background-color: #584848;
+}
