@@ -6,5 +6,6 @@ require('angular-google-maps');
 require('angular-animate');
 require('bootstrap/collapse');
 require('bootstrap/transition');
+require('bootstrap/modal');
 require('bootstrap/dropdown');
 

@@ -26,7 +26,7 @@ only screen and (min-resolution: 1.25dppx) {
   -webkit-font-smoothing: subpixel-antialiased;
 }
 
-strong {
+article strong {
   font-weight: bold;
   color: #FF9944;
 }
@@ -50,11 +50,19 @@ h1, h2, h3 {
 }
 
 a {
+  color: #cd4843;
+}
+
+a:hover {
+  color: #ff5853;
+}
+
+article a {
   color: #edc;
   text-decoration: underline;
 }
 
-a:hover {
+article a:hover {
   color: #fff;
 }
 

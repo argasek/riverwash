@@ -136,27 +136,47 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
     $stateProvider.state('app.participants', {
         url: '/' + 'participants',
         templateUrl: languageTemplateUrl('participants'),
-        controller: function ($scope, $http) {
+        controller: function ($scope, $http, $httpParamSerializer) {
+            var api = 'http://api.riverwash.org';
+
+            if (location.host === 'localhost:8000') {
+                api = 'http://api-riverwash.local:8080';
+            }
+
             $scope.visitors = [];
+            $scope.registrationForm = {};
+            $scope.errorMessage = '';
 
             $scope.registrationButtonVisible = true;
             $scope.registrationFormVisible = false;
+
+            function errorCallback(response) {
+                $scope.errorMessage = response.data ? response.data.message : '';
+                $scope.openRegistrationForm();
+                $('#registrationFailedModal').modal('show');
+            }
 
             $scope.openRegistrationForm = function() {
                 $scope.registrationFormVisible = true;
                 $scope.registrationButtonVisible = false;
             };
 
-            $scope.submitRegistrationForm = function() {
-                $scope.registrationFormVisible = false;
+            $scope.submitRegistrationForm = function(user) {
+                $http.post(api + '/user/register', $httpParamSerializer(user)).then(function successCallback(response) {
+                    var data = response.data.data;
+                    if (data.code) {
+                        errorCallback(response.data);
+                    } else {
+                        $scope.registrationFormVisible = false;
+                        $scope.visitors.push(data);
+                    }
+                }, errorCallback);
             };
 
-            $http({
-                method: 'GET',
-                url: 'http://api.riverwash.org/users'
-            }).then(function successCallback(response) {
+            $http({ method: 'GET', url: api + '/users'}).then(function successCallback(response) {
                 $scope.visitors = response.data.data;
             }, function errorCallback(response) {
+                console.error(response);
             });
         }
     });
@@ -220,9 +240,10 @@ application.directive('navbarMainCollapse', ['$rootScope', function ($rootScope)
 }]);
 
 application.run(
-    function ($rootScope, $state, $stateParams) {
+    function ($rootScope, $state, $stateParams, $http) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
+        $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
     }
 );
 
