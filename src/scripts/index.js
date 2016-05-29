@@ -1,6 +1,12 @@
 var angular = require('angular');
 
-var application = angular.module('Riverwash.app', ['ui.router', 'uiGmapgoogle-maps', 'nemLogging', 'pascalprecht.translate']);
+var application = angular.module('Riverwash.app', [
+    'ui.router',
+    'uiGmapgoogle-maps',
+    'nemLogging',
+    'pascalprecht.translate',
+    'ngAnimate'
+]);
 
 // tries to determine the browser's language
 var getDefaultLanguage = function ($windowProvider) {
@@ -48,6 +54,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         ABOUT: 'About',
         PARTY: 'Party information',
         COMPETITIONS: 'Competitions & rules',
+        PARTICIPANTS: 'Participants',
         SCHEDULE: 'Schedule',
         TICKETS: 'Tickets',
         TRAVELLING: 'Travelling & Accommodation',
@@ -55,9 +62,10 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
     });
     $translateProvider.translations('pl', {
         HOME: 'Start',
-        PARTY: 'Najważniejsze informacje',
         ABOUT: 'O imprezie',
+        PARTY: 'Najważniejsze informacje',
         COMPETITIONS: 'Compoty i zasady',
+        PARTICIPANTS: 'Uczestnicy',
         SCHEDULE: 'Plan imprezy',
         TICKETS: 'Bilety',
         TRAVELLING: 'Lokalizacja i nocleg',
@@ -125,9 +133,37 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         }
     });
 
+    $stateProvider.state('app.participants', {
+        url: '/' + 'participants',
+        templateUrl: languageTemplateUrl('participants'),
+        controller: function ($scope, $http) {
+            $scope.visitors = [];
+
+            $scope.registrationButtonVisible = true;
+            $scope.registrationFormVisible = false;
+
+            $scope.openRegistrationForm = function() {
+                $scope.registrationFormVisible = true;
+                $scope.registrationButtonVisible = false;
+            };
+
+            $scope.submitRegistrationForm = function() {
+                $scope.registrationFormVisible = false;
+            };
+
+            $http({
+                method: 'GET',
+                url: 'http://api.riverwash.org/users'
+            }).then(function successCallback(response) {
+                $scope.visitors = response.data.data;
+            }, function errorCallback(response) {
+            });
+        }
+    });
+
 });
 
-application.controller('applicationController', function ($scope, $stateParams, $state, $rootScope, $translate) {
+application.controller('applicationController', function ($scope, $stateParams, $state, $rootScope, $translate, $http) {
     var latitude = 50.259678;
     var longitude = 19.0168093;
     var coords = {
@@ -179,21 +215,6 @@ application.directive('navbarMainCollapse', ['$rootScope', function ($rootScope)
                     navbar.collapse('hide');
                 }
             });
-            // navbar.find('a.dropdown-toggle').on('click', function(e) {
-            //     var elmnt = $(this).parent().parent();
-            //     if (!elmnt.hasClass('nav')) {
-            //         var li = $(this).parent();
-            //         var heightParent = parseInt(elmnt.css('height').replace('px', '')) / 2;
-            //         var widthParent = parseInt(elmnt.css('width').replace('px', '')) - 10;
-            //
-            //         if(!li.hasClass('open')) li.addClass('open');
-            //         else li.removeClass('open');
-            //         $(this).next().css('top', heightParent + 'px');
-            //         $(this).next().css('left', widthParent + 'px');
-            //
-            //         return false;
-            //     }
-            // });
         }
     };
 }]);

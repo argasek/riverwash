@@ -13,6 +13,7 @@ $grid-float-breakpoint: 1024px;
 @import "bootstrap/code";
 @import "bootstrap/grid";
 @import "bootstrap/forms";
+@import "bootstrap/buttons";
 
 // Components
 @import "bootstrap/component-animations";
@@ -76,4 +77,56 @@ $grid-float-breakpoint: 1024px;
 
 .dropdown-menu .divider {
   background-color: #584848;
+}
+
+.registration-form.ng-hide {
+  opacity: 0;
+}
+
+.registration-form.ng-show {
+  opacity: 1.0;
+}
+
+.registration-form.ng-hide-add, .registration-form.ng-hide-remove {
+  /* this is required as of 1.3x to properly
+     apply all styling in a show/hide animation */
+  transition: 0s linear all;
+}
+
+.registration-form.ng-hide-add-active,
+.registration-form.ng-hide-remove-active {
+  /* the transition is defined in the active class */
+  transition: 0.5s linear all;
+}
+
+.help-block {
+  font-size: 90%;
+}
+
+.form-group label .required {
+  font-weight: normal;
+  color: #a69587;
+}
+
+.form-control {
+  background-color: #350E0E;
+  color: #ffdddd;
+  border: 1px solid rgba(90, 5, 5, 0.84);
+}
+.form-control::selection {
+  color: white;
+  background: rgba(148, 5, 5, 0.84);
+}
+
+.form-control:focus {
+  background-color: #501919;
+  border-color: rgba(123, 3, 3, 0.9);
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(82, 7, 7, 0.84), 0 0 4px rgba(90, 5, 5, 0.84);
+}
+
+.form-control:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #501919 inset;
+  -webkit-text-fill-color: red !important;
+  color: #fff;
 }

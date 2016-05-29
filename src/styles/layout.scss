@@ -262,3 +262,19 @@ a[ui-sref] {
     column-width: 5em;
   }
 }
+
+.registration-list {
+  .row {
+    border-bottom: 2px solid #4A2626;
+  }
+  .col {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+  .visitor-image img {
+    border: 1px solid #4A2626;
+    border-radius: 4px;
+    width: 40px;
+    height: 40px;
+  }
+}
