@@ -141,6 +141,9 @@ a[ui-sref] {
   border-bottom-width: 0;
   display: block;
   background-color: rgba(0, 0, 0, 0.9);
+  @media (max-width: 768px) {
+    min-width: 100%;
+  }
 }
 
 .home {
@@ -149,7 +152,7 @@ a[ui-sref] {
     background-color: transparent;
     display: flex;
     align-items: center;
-
+    min-width: initial;
   }
 }
 
