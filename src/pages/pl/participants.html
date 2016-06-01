@@ -1,0 +1,94 @@
+<article class="content">
+  <h1>Uczestnicy</h1>
+
+  <p>Liczba zarejestrowanych uczestników: <span class="vistors-number">{{ visitors.length }}</span>.</p>
+
+  <div class="row registration-button" ng-show="registrationButtonVisible">
+    <div class="col-xs-12 col-sm-4">
+      <button type="submit" class="btn btn-danger" ng-click="openRegistrationForm()">Chcę się zarejestrować!</button>
+    </div>
+  </div>
+
+  <div class="row registration-form" ng-show="registrationFormVisible">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+      <form autocomplete="off">
+        <div class="form-group">
+          <label for="handle">Ksywa <span class="required">(wymagana)</span></label>
+          <input type="text" class="form-control" id="handle" placeholder="Podaj ksywę, pseudonim (lub imię)" ng-model="user.handle">
+        </div>
+        <div class="form-group">
+          <label for="group">Grupa</label>
+          <input type="text" class="form-control" id="group" placeholder="Grupa (grupy)" ng-model="user.group">
+          <p class="help-block">Nie jesteś w żadnej grupie? Nic nie szkodzi; pozostaw puste pole.</p>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">E-mail <span class="required">(wymagany)</span></label>
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" ng-model="user.email">
+          <p class="help-block">Jeśli posiadasz konto w serwisie Gravatar, wyświetlimy Twój awatar w oparciu o powyższy adres.</p>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Hasło <span class="required">(wymagane)</span></label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Hasło" ng-model="user.password">
+        </div>
+        <div class="form-group">
+          <label for="country">Kraj</label>
+          <select id="country" class="form-control" ng-model="user.country">
+            <option value="PL" selected>Polska</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <p class="help-block">
+            Zachowaj, proszę, Twój adres <strong>e-mail</strong> i <strong>hasło</strong> w bezpiecznym miejscu.
+            Wkrótce udostępnimy możliwość logowania się na stronie, a dla osób, które zalogują się, szykujemy miłą niespodziankę!
+          </p>
+          <p class="help-block">
+            Kłopoty z rejestracją? <a href="mailto:contact@riverwash.org">Napisz do nas</a>.
+          </p>
+        </div>
+        <button type="submit" class="btn btn-danger" ng-click="submitRegistrationForm(user)">Dopisz mnie do listy!</button>
+      </form>
+
+    </div>
+  </div>
+
+  <h2>Zarejestrowani uczestnicy</h2>
+
+  <div class="row registration-list">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+      <div class="row" ng-repeat="visitor in visitors" ng-if="visitors">
+        <div class="col-xs-2 col-sm-2 col-md-1 col visitor-image">
+          <img ng-if="visitor.image" ng-src="{{ visitor.image }}">
+        </div>
+        <div class="col-xs-8 col-sm-6 col-md-7 col"><p>{{ $index + 1 }}. {{ visitor.handle }}<span class="visitor-group" ng-if="visitor.group"> / {{ visitor.group }}</span></p></div>
+        <div class="col-xs-2 col-sm-4 col country"><p>{{ visitor.country }}</p></div>
+      </div>
+      <div ng-if="!visitors">
+        <p>Nie ma jeszcze zarejestrowanych uczestników. Bądź pierwszym!</p>
+      </div>
+
+    </div>
+  </div>
+
+</article>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="registrationFailedModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Rejestracja nieudana!</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          Podczas rejestracji nastąpił błąd. Albo nie wypełniono poprawnie wszystkich pól, albo wykopyrtnął się serwer.
+          Jeśli sytuacja będzie się powtarzać, <a href="mailto:contact@riverwash.org">napisz do nas</a>.
+        </p>
+        <div class="alert alert-danger" role="alert" ng-if="errorMessage"><p><strong>Błąd:</strong> {{ errorMessage }}</p></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No cóż, trudno</button>
+      </div>
+    </div>
+  </div>
+</div>
+

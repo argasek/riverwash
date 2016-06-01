@@ -272,6 +272,9 @@ a[ui-sref] {
 }
 
 .registration-list {
+  .row:first-of-type {
+    border-top: 2px solid #4A2626;
+  }
   .row {
     border-bottom: 2px solid #4A2626;
   }
@@ -279,10 +282,23 @@ a[ui-sref] {
     padding-top: 1em;
     padding-bottom: 1em;
   }
-  .visitor-image img {
-    border: 1px solid #4A2626;
-    border-radius: 4px;
-    width: 40px;
-    height: 40px;
+  p {
+    margin-top: 3%;
+  }
+  .country p {
+    text-align: right;
+  }
+  .visitor-image {
+    padding-left: 4px;
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      border: 1px solid #777;
+      border-radius: 4px;
+      width: 80%;
+      height: 80%;
+    }
   }
 }

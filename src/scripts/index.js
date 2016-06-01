@@ -58,7 +58,8 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         SCHEDULE: 'Schedule',
         TICKETS: 'Tickets',
         TRAVELLING: 'Travelling & Accommodation',
-        CONTACT: 'Contact'
+        CONTACT: 'Contact',
+        REGISTER_BELOW: 'Register below!'
     });
     $translateProvider.translations('pl', {
         HOME: 'Start',
@@ -69,7 +70,8 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         SCHEDULE: 'Plan imprezy',
         TICKETS: 'Bilety',
         TRAVELLING: 'Lokalizacja i nocleg',
-        CONTACT: 'Kontakt'
+        CONTACT: 'Kontakt',
+        REGISTER_BELOW: 'Zarejestruj się!'
     });
 
     $translateProvider.registerAvailableLanguageKeys(['en', 'pl'], {
@@ -136,7 +138,8 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
     $stateProvider.state('app.participants', {
         url: '/' + 'participants',
         templateUrl: languageTemplateUrl('participants'),
-        controller: function ($scope, $http, $httpParamSerializer) {
+        controller: function ($scope, $http, $httpParamSerializer, $stateParams) {
+            var lang = getSupportedLanguage($stateParams.lang, defaultLanguage);
             var api = 'http://api.riverwash.org';
 
             if (location.host === 'localhost:8000') {
@@ -162,6 +165,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
             };
 
             $scope.submitRegistrationForm = function(user) {
+                user.language = lang;
                 $http.post(api + '/user/register', $httpParamSerializer(user)).then(function successCallback(response) {
                     var data = response.data.data;
                     if (data.code) {
