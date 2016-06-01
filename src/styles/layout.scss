@@ -133,6 +133,7 @@ a[ui-sref] {
   display: flex;
   align-items: stretch;
   min-height: 100%;
+  margin-left: -1px;
 }
 
 .ui-view-inner {
