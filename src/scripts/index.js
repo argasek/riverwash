@@ -59,7 +59,14 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         TICKETS: 'Tickets',
         TRAVELLING: 'Travelling & Accommodation',
         CONTACT: 'Contact',
-        REGISTER_BELOW: 'Register below!'
+        REGISTER_BELOW: 'Register below!',
+        MACHINES: 'Compo machines',
+        COMPOS_GFX: 'Graphics',
+        COMPOS_MSX: 'Music',
+        COMPOS_EXE: 'Executable',
+        COMPOS_WLD: 'Animation, Wild',
+        COMPOS_OTH: 'Crazy, Slow',
+        COMPOS_ALL: 'General rules'
     });
     $translateProvider.translations('pl', {
         HOME: 'Start',
@@ -71,7 +78,14 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         TICKETS: 'Bilety',
         TRAVELLING: 'Lokalizacja i nocleg',
         CONTACT: 'Kontakt',
-        REGISTER_BELOW: 'Zarejestruj się!'
+        REGISTER_BELOW: 'Zarejestruj się!',
+        MACHINES: 'Platformy sprzętowe',
+        COMPOS_GFX: 'Grafika',
+        COMPOS_MSX: 'Muzyka',
+        COMPOS_EXE: 'Demo, Intro',
+        COMPOS_WLD: 'Animacja, Wild',
+        COMPOS_OTH: 'Crazy, Slow',
+        COMPOS_ALL: 'Zasady ogólne'
     });
 
     $translateProvider.registerAvailableLanguageKeys(['en', 'pl'], {
@@ -109,11 +123,18 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
 
     var states = [
         //'about',
+        'competitions',
+        'compos-executable',
+        'compos-general',
+        'compos-graphics',
+        'compos-music',
+        'compos-others',
+        'compos-wild',
         'contact',
+        'machines',
         'schedule',
         'tickets',
-        'travelling',
-        'competitions'
+        'travelling'
     ];
 
     states.forEach(function (state) {
