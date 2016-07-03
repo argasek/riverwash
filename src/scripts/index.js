@@ -54,38 +54,40 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         ABOUT: 'About',
         PARTY: 'Party information',
         COMPETITIONS: 'Competitions & rules',
-        PARTICIPANTS: 'Participants',
+        PARTICIPANTS: 'Create account',
         SCHEDULE: 'Schedule',
         TICKETS: 'Tickets',
         TRAVELLING: 'Travelling & Accommodation',
         CONTACT: 'Contact',
-        REGISTER_BELOW: 'Register below!',
+        REGISTER_BELOW: 'Polish Scener Of The Year!',
         MACHINES: 'Compo machines',
         COMPOS_GFX: 'Graphics',
         COMPOS_MSX: 'Music',
         COMPOS_EXE: 'Executable',
         COMPOS_WLD: 'Animation, Wild',
         COMPOS_OTH: 'Crazy, Slow',
-        COMPOS_ALL: 'General rules'
+        COMPOS_ALL: 'General rules',
+        SOTY: 'Submit your candidate'
     });
     $translateProvider.translations('pl', {
         HOME: 'Start',
         ABOUT: 'O imprezie',
         PARTY: 'Najważniejsze informacje',
         COMPETITIONS: 'Compoty i zasady',
-        PARTICIPANTS: 'Uczestnicy',
+        PARTICIPANTS: 'Zarejestruj się',
         SCHEDULE: 'Plan imprezy',
         TICKETS: 'Bilety',
         TRAVELLING: 'Lokalizacja i nocleg',
         CONTACT: 'Kontakt',
-        REGISTER_BELOW: 'Zarejestruj się!',
+        REGISTER_BELOW: 'Polski Demoscener Roku!',
         MACHINES: 'Platformy sprzętowe',
         COMPOS_GFX: 'Grafika',
         COMPOS_MSX: 'Muzyka',
         COMPOS_EXE: 'Demo, Intro',
         COMPOS_WLD: 'Animacja, Wild',
         COMPOS_OTH: 'Crazy, Slow',
-        COMPOS_ALL: 'Zasady ogólne'
+        COMPOS_ALL: 'Zasady ogólne',
+        SOTY: 'Zgłoś kandydaturę'
     });
 
     $translateProvider.registerAvailableLanguageKeys(['en', 'pl'], {
@@ -106,6 +108,19 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         return function ($stateParams) {
             var lang = getSupportedLanguage($stateParams.lang, defaultLanguage);
             return '/pages/' + lang + '/' + template + '.html';
+        }
+    }
+
+    function getApiEndpoint($stateParams) {
+        var lang = getSupportedLanguage($stateParams.lang, defaultLanguage);
+        var api = 'http://api.riverwash.org';
+
+        if (location.host === 'localhost:8000') {
+            api = 'http://api-riverwash.local:8080';
+        }
+        return {
+            api: api,
+            lang: lang
         }
     }
 
@@ -160,12 +175,8 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         url: '/' + 'participants',
         templateUrl: languageTemplateUrl('participants'),
         controller: function ($scope, $http, $httpParamSerializer, $stateParams) {
-            var lang = getSupportedLanguage($stateParams.lang, defaultLanguage);
-            var api = 'http://api.riverwash.org';
-
-            if (location.host === 'localhost:8000') {
-                api = 'http://api-riverwash.local:8080';
-            }
+            var api = getApiEndpoint($stateParams).api;
+            var lang = getApiEndpoint($stateParams).lang;
 
             $scope.visitors = [];
             $scope.registrationForm = {};
@@ -203,6 +214,61 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
             }, function errorCallback(response) {
                 console.error(response);
             });
+        }
+    });
+
+    $stateProvider.state('app.scener-of-the-year', {
+        url: '/' + 'scener-of-the-year',
+        templateUrl: languageTemplateUrl('scener-of-the-year'),
+        controller: function ($scope, $http, $httpParamSerializer, $stateParams) {
+            var api = getApiEndpoint($stateParams).api;
+            var lang = getApiEndpoint($stateParams).lang;
+
+            $scope.visitors = [];
+            $scope.nominee = {};
+            $scope.errorMessage = '';
+
+            $scope.nominateFormVisible = false;
+            $scope.nominationDone = false;
+            $scope.authenticated = false;
+
+            function errorCallback(response) {
+                $scope.errorMessage = response.data ? response.data.message : '';
+                $scope.nominateFormVisible = false;
+                $('#signinFailedModal').modal('show');
+            }
+
+            function errorCallbackNominate(response) {
+                $scope.errorMessage = response.data ? response.data.message : '';
+                $('#signinFailedModal').modal('show');
+            }
+
+            $scope.submitSignInForm = function(user) {
+                user.language = lang;
+                $http.post(api + '/user/sign-in', $httpParamSerializer(user)).then(function successCallback(response) {
+                    var data = response.data.data;
+                    if (data.code) {
+                        errorCallback(response.data);
+                    } else {
+                      $scope.authenticated = true;
+                      $scope.nominationDone = data.nominationCasted;
+                      $scope.nominateFormVisible = !data.nominationCasted;
+                    }
+                }, errorCallback);
+            };
+
+            $scope.submitNomineeForm = function(nominee) {
+                nominee.language = lang;
+                $http.post(api + '/user/nominate', $httpParamSerializer(nominee)).then(function successCallback(response) {
+                    var data = response.data.data;
+                    if (data.code) {
+                        errorCallbackNominate(response.data);
+                    } else {
+                        $scope.nominationDone = true;
+                    }
+                }, errorCallbackNominate);
+            };
+
         }
     });
 
@@ -269,6 +335,7 @@ application.run(
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
         $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+        $http.defaults.withCredentials = true;
     }
 );
 

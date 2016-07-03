@@ -1,0 +1,97 @@
+<article class="content">
+  <h1>Polish Demoscener Of The Year</h1>
+
+  <p>
+    During Riverwash 2015 we held a "Polish Demoscene All-Star" ceremony, being an award for a person, who
+    — in our opinion — deserves a great deal of respect for his/her overall demoscene activity and input.
+    A person chosen by the demoparty organizers was <strong>Kierownik^Elude</strong> for his overall achievements
+    on the Amiga demoscene. This year we changed the name a little bit, but most importantly — as we had promised —
+    we left the choice to the public.
+  </p>
+
+  <p>
+    Hereby we open the public submission of candidates for the <strong>Polish Demoscener Of The Year</strong> awards!
+    In the form below please fill in the nickname of the <strong>Polish, active demoscener</strong> (for at least
+    the last two years) on <strong>any platform</strong>, who — in your opinion — deserves this title the most
+    (along with a short description why do you think so). You may nominate your candidate till the end of July.
+    In the August we will present the candidates you have chosen on the website.
+  </p>
+
+  <p>
+    Next, demosceners with the biggest number of submissions will get to the 2nd stage of voting — which will be held
+    on this year's Riverwash — each demoparty attendant will have a chance to cast a vote (electronic or a paper one).
+    A demoscener with the biggest number of votes will get the Polish Demoscener Of The Year title and receive
+    a surprise prize.
+  </p>
+
+  <div ng-show="!authenticated">
+
+    <p>In order to submit your candidate, you must <a ui-sref="app.participants">register an account</a> and sign-in below:</p>
+
+    <div class="row signin-form">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <form autocomplete="off">
+          <div class="form-group">
+            <label for="exampleInputEmail1">E-mail <span class="required">(required)</span></label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" ng-model="user.email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword">Password <span class="required">(required)</span></label>
+            <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" ng-model="user.password">
+          </div>
+          <div class="form-group">
+            <p class="help-block">
+              Cannot sign-in? <a href="mailto:contact@riverwash.org">Contact us</a>.
+            </p>
+          </div>
+          <button type="submit" class="btn btn-danger" ng-click="submitSignInForm(user)">Sign in</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="nominateFormVisible && !nominationDone">
+    <div class="row nominate-form">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <form autocomplete="off">
+          <div class="form-group">
+            <label for="Nickname">Who do you wish to nominate? <span class="required">(required)</span></label>
+            <input type="text" class="form-control" id="Nickname" placeholder="Nickname / group(s)" ng-model="nominee.nickname" autofocus ng-disabled="nominationDone">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword">Why this person deserves to win? <span class="required">(required)</span></label>
+            <textarea rows="5" class="form-control" id="Description" placeholder="Describe the achievements or other reasons" ng-model="nominee.description" ng-disabled="nominationDone"></textarea>
+          </div>
+          <button type="submit" class="btn btn-danger" ng-click="submitNomineeForm(nominee)" ng-show="!nominationDone">Submit candidate</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info alert-dismissable" role="alert" ng-show="nominationDone">
+    <p><strong>Thank you!</strong> Your nomination was successfully submitted.</p>
+  </div>
+
+</article>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="signinFailedModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Sign-in failed!</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          There was an error during sign-in or nominee submission. Either you didn't fill the form correctly
+          or the server is borked. Try again; if the problem persists, <a href="mailto:contact@riverwash.org">e-mail us</a>.
+        </p>
+        <div class="alert alert-danger" role="alert" ng-if="errorMessage"><p><strong>Error:</strong> {{ errorMessage }}</p></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Oh, crap</button>
+      </div>
+    </div>
+  </div>
+</div>
