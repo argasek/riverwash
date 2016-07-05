@@ -67,7 +67,8 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         COMPOS_WLD: 'Animation, Wild',
         COMPOS_OTH: 'Crazy, Slow',
         COMPOS_ALL: 'General rules',
-        SOTY: 'Submit your candidate'
+        SOTY: 'Submit your candidate',
+        MUSIC: 'Music events'
     });
     $translateProvider.translations('pl', {
         HOME: 'Start',
@@ -87,7 +88,8 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         COMPOS_WLD: 'Animacja, Wild',
         COMPOS_OTH: 'Crazy, Slow',
         COMPOS_ALL: 'Zasady ogólne',
-        SOTY: 'Zgłoś kandydaturę'
+        SOTY: 'Zgłoś kandydaturę',
+        MUSIC: 'Koncerty'
     });
 
     $translateProvider.registerAvailableLanguageKeys(['en', 'pl'], {
@@ -147,6 +149,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         'compos-wild',
         'contact',
         'machines',
+        'music-events',
         'schedule',
         'tickets',
         'travelling'

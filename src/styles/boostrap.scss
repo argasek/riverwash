@@ -27,6 +27,7 @@ $grid-float-breakpoint: 1024px;
 // Utility classes
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
+@import "bootstrap/responsive-embed";
 
 .modal {
   color: #333;
