@@ -61,6 +61,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         CONTACT: 'Contact',
         REGISTER_BELOW: 'Polish Scener Of The Year!',
         MACHINES: 'Compo machines',
+        NEWCOMERS: 'First time on Riverwash?',
         COMPOS_GFX: 'Graphics',
         COMPOS_MSX: 'Music',
         COMPOS_EXE: 'Executable',
@@ -82,6 +83,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         CONTACT: 'Kontakt',
         REGISTER_BELOW: 'Polski Demoscener Roku!',
         MACHINES: 'Platformy sprzętowe',
+        NEWCOMERS: 'Twój pierwszy raz?',
         COMPOS_GFX: 'Grafika',
         COMPOS_MSX: 'Muzyka',
         COMPOS_EXE: 'Demo, Intro',
@@ -150,6 +152,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         'contact',
         'machines',
         'music-events',
+        'newcomers',
         'schedule',
         'tickets',
         'travelling'
