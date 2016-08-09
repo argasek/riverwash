@@ -325,3 +325,46 @@ a[ui-sref] {
   padding-bottom: 30%;
   margin-bottom: 0.5em;
 }
+
+.nominee {
+  background: rgba(120, 146, 255, 0.27);
+  border: 1px solid rgba(120, 146, 255, 0.32);
+  display: flex;
+  flex-flow: row;
+  .description {
+    width: 100%
+  }
+  strong {
+    color: rgba(142, 227, 255, 0.81);
+    font-weight: 400;
+  }
+  h2 {
+    margin-top: 0
+  }
+  .picture {
+    margin-right: 1em;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 202px;
+
+    img {
+      border: 1px solid rgba(120, 146, 255, 0.62);
+      width: 200px;
+      height: 200px;
+    }
+    margin-bottom: 1em;
+  }
+  padding: 1em;
+  margin-top: 1em;
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .nominee {
+    flex-flow: column;
+  }
+}

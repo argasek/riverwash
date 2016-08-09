@@ -67,7 +67,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         COMPOS_WLD: 'Animation, Wild',
         COMPOS_OTH: 'Crazy, Slow',
         COMPOS_ALL: 'General rules',
-        SOTY: 'See nominations',
+        SOTY: 'Nominations',
         MUSIC: 'Music events'
     });
     $translateProvider.translations('pl', {
@@ -89,7 +89,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         COMPOS_WLD: 'Animacja, Wild',
         COMPOS_OTH: 'Crazy, Slow',
         COMPOS_ALL: 'Zasady ogólne',
-        SOTY: 'Nominowani',
+        SOTY: 'Nominacje',
         MUSIC: 'Koncerty'
     });
 
