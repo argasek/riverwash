@@ -2,7 +2,6 @@ var angular = require('angular');
 
 var application = angular.module('Riverwash.app', [
     'ui.router',
-    'uiGmapgoogle-maps',
     'nemLogging',
     'pascalprecht.translate',
     'ngAnimate'
@@ -68,7 +67,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         COMPOS_WLD: 'Animation, Wild',
         COMPOS_OTH: 'Crazy, Slow',
         COMPOS_ALL: 'General rules',
-        SOTY: 'Submit your candidate',
+        SOTY: 'See nominations',
         MUSIC: 'Music events'
     });
     $translateProvider.translations('pl', {
@@ -90,7 +89,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         COMPOS_WLD: 'Animacja, Wild',
         COMPOS_OTH: 'Crazy, Slow',
         COMPOS_ALL: 'Zasady ogólne',
-        SOTY: 'Zgłoś kandydaturę',
+        SOTY: 'Nominowani',
         MUSIC: 'Koncerty'
     });
 
@@ -281,13 +280,6 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
 });
 
 application.controller('applicationController', function ($scope, $stateParams, $state, $rootScope, $translate, $http) {
-    var latitude = 50.259678;
-    var longitude = 19.0168093;
-    var coords = {
-        latitude: latitude,
-        longitude: longitude
-    };
-
     var i, pad;
 
     $scope.bricks = [];
@@ -298,16 +290,6 @@ application.controller('applicationController', function ($scope, $stateParams, 
             src: 'images/photos/' + pad + '.jpg'
         });
     }
-
-
-    $scope.map = {center: coords, zoom: 16};
-    $scope.marker = {
-        id: 0,
-        coords: {
-            latitude: latitude,
-            longitude: longitude
-        }
-    };
 
     $translate.use($stateParams.lang);
 
