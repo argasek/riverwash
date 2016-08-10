@@ -2,7 +2,7 @@
   <h1>Polski Demoscener Roku</h1>
 
   <p>
-    Podczas Riverwash 2015 przyznaliśmy nagrodę "Polish Demoscene All—Star", czyli wyróżnienie dla osoby, która
+    Podczas Riverwash 2015 przyznaliśmy nagrodę "Polish Demoscene All-Star", czyli wyróżnienie dla osoby, która
     swoim dorobkiem na demoscenie zasługuje, naszym zdaniem, na uhonorowanie. Organizatorzy party wybrali
     <strong>Kierownika^Elude</strong> za jego zasługi dla amigowej demosceny. Od tego roku zmieniliśmy nieco nazwę
     nagrody, a także — zgodnie z zapowiedzią — przekazujemy wybór w Wasze ręce.
@@ -15,14 +15,14 @@
   <div class="nominees">
     <div class="nominee">
       <div class="picture">
-        <h2>Aceman</h2>
+        <h2>AceMan</h2>
         <img src="images/nominees/aceman.png">
       </div>
       <div class="description">
         <p><strong>1. Od kiedy jesteś na scenie?</strong> Aktywnie koniec 2004 (pierwsza prodka, music disk). Moduły do szuflady i scenewatching znacznie wcześniej.</p>
         <p><strong>2. Czym się zajmujesz na scenie?</strong> Głównie muzyka. Raz na jakiś czas popełnię animkę. Od 2013 pomagam organizować parties full time — WeCan i teraz Riverwash. Prowadzę też <a href="http://modules.pl" target="_blank">modules.pl</a> od 2004 roku.</p>
         <p><strong>3. Twoja ulubiona platforma?</strong> Amiga i konsole Nintendo.</p>
-        <p><strong>4. Twoja ulubiona produkcja?</strong> Sporo tego jest. Ale w ścisłej czołówce na pewno &quot;Klone&quot; (DCS, Amiga) i &quot;Masagin&quot; (Farbrausch &amp; Neuro, PC). Poza tym produkcje ASD, Synesthetics, UF&DD, Kewlers, MFX, Traction... dużo peceta, niestety (?)</p>
+        <p><strong>4. Twoja ulubiona produkcja?</strong> Sporo tego jest. Ale w ścisłej czołówce na pewno &quot;Klone&quot; (DCS, Amiga) i &quot;Masagin&quot; (Farbrausch &amp; Neuro, PC). Poza tym produkcje ASD, Synesthetics, UF&DD, Kewlers, MFX, Traction... dużo peceta, niestety ;-)</p>
         <p><strong>5. Co uważasz za swoje największe osiągnięcie?</strong> Tę nominację? I fakt, że ludzie zaczynają chcieć moje zaki do prodek.</p>
         <p><strong>6. Jeżeli masz coś do przekazania głosującym — śmiało!</strong> MOD &gt; MP3, howgh.</p>
       </div>
@@ -104,7 +104,7 @@
 
     <div class="nominee">
       <div class="picture">
-        <h2>Jazzcat</h2>
+        <h2>JazzCat</h2>
         <img src="images/nominees/jazzcat.png">
       </div>
       <div class="description">
@@ -186,75 +186,4 @@
 
   </div>
 
-  <div ng-show="false">
-
-    <p>Aby móc zgłosić kandydaturę, musisz <a ui-sref="app.participants">zarejestrować konto</a> na stronie, a następnie zalogować się:</p>
-
-    <div class="row signin-form">
-      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-        <form autocomplete="off">
-          <div class="form-group">
-            <label for="exampleInputEmail1">E-mail <span class="required">(wymagany)</span></label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" ng-model="user.email">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword">Hasło <span class="required">(wymagane)</span></label>
-            <input type="password" class="form-control" id="exampleInputPassword" placeholder="Hasło" ng-model="user.password">
-          </div>
-          <div class="form-group">
-            <p class="help-block">
-              Kłopoty z logowaniem się? <a href="mailto:contact@riverwash.org">Napisz do nas</a>.
-            </p>
-          </div>
-          <button type="submit" class="btn btn-danger" ng-click="submitSignInForm(user)">Zaloguj się</button>
-        </form>
-
-      </div>
-    </div>
-  </div>
-
-  <div ng-show="nominateFormVisible && !nominationDone">
-    <div class="row nominate-form">
-      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-        <form autocomplete="off">
-          <div class="form-group">
-            <label for="Nickname">Kogo chcesz nominować? <span class="required">(wymagane)</span></label>
-            <input type="text" class="form-control" id="Nickname" placeholder="Ksywa / grupa" ng-model="nominee.nickname" autofocus ng-disabled="nominationDone">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword">Uzasadnienie <span class="required">(wymagane)</span></label>
-            <textarea rows="5" class="form-control" id="Description" placeholder="Uzasadnienie" ng-model="nominee.description" ng-disabled="nominationDone"></textarea>
-          </div>
-          <button type="submit" class="btn btn-danger" ng-click="submitNomineeForm(nominee)" ng-show="!nominationDone">Wyślij kandydaturę</button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div class="alert alert-info alert-dismissable" role="alert" ng-show="nominationDone">
-    <p><strong>Dziękujemy!</strong> Twoja nominacja została zgłoszona.</p>
-  </div>
-
 </article>
-
-<div class="modal fade" tabindex="-1" role="dialog" id="signinFailedModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Błąd!</h4>
-      </div>
-      <div class="modal-body">
-        <p>
-          Podczas logowania się lub wysyłania nominacji nastąpił błąd. Albo nie wypełniono poprawnie wszystkich pól,
-          albo wykopyrtnął się serwer. Jeśli sytuacja będzie się powtarzać,
-          <a href="mailto:contact@riverwash.org">napisz do nas</a>.
-        </p>
-        <div class="alert alert-danger" role="alert" ng-if="errorMessage"><p><strong>Błąd:</strong> {{ errorMessage }}</p></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">No cóż, trudno</button>
-      </div>
-    </div>
-  </div>
-</div>
