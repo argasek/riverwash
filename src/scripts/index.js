@@ -60,7 +60,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         CONTACT: 'Contact',
         REGISTER_BELOW: 'Polish Scener Of The Year!',
         MACHINES: 'Compo machines',
-        NEWCOMERS: 'First time on Riverwash?',
+        NEWCOMERS: 'First time at Riverwash?',
         COMPOS_GFX: 'Graphics',
         COMPOS_MSX: 'Music',
         COMPOS_EXE: 'Executable',
