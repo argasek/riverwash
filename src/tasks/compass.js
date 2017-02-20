@@ -31,6 +31,9 @@ module.exports = {
             // output directly to the final ('dist') directory instead of intermediate one ('.tmp');
             //cssDir: '<%= config.dist %>/styles',
             //generatedImagesDir: '<%= config.dist %>/images/generated',
+            relativeAssets: true,
+            outputStyle: 'compressed',
+            debugInfo: false
         }
     }
 };
