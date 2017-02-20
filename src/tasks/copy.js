@@ -10,7 +10,7 @@ module.exports = {
                 dot: true,
                 cwd: '<%= config.app %>',
                 dest: '<%= config.dist %>',
-                src: ['*.{html,ico,png,txt}', '.htaccess']
+                src: ['{,*/}*.{html,ico,png,txt}', '.htaccess']
             },
             {
                 expand: true,

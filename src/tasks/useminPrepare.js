@@ -5,7 +5,7 @@
 'use strict';
 
 module.exports = {
-    html: '<%= config.app %>/index.html',
+    html: ['<%= config.app %>/index.html', '<%= config.app %>/wifi/index.html'],
 
     options: {
         dest: '<%= config.dist %>',
