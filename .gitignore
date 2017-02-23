@@ -4,3 +4,4 @@
 dist/*
 node_modules
 src/images/photos*
+deploy.sh

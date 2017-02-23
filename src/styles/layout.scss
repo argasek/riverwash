@@ -1,12 +1,12 @@
-$text-color: #ae9dbf;
+$text-color: #ae9d00;
 $header-color: lighten(adjust_hue($text-color, 10), 22);
 $header-color-darker: lighten(adjust_hue($text-color, 20), 15);
 $anchor-color: lighten($text-color, 15);
 $anchor-hover-color: saturate($anchor-color, 10);
-$lead-color-first: #cc45ff;
-$lead-color-second: #d445f5;
-$lead-color-first-darker: #a524d6;
-$lead-color-first-darkest: #711a94;
+$lead-color-first: #cc4500;
+$lead-color-second: #d44500;
+$lead-color-first-darker: #a52400;
+$lead-color-first-darkest: #711a00;
 
 html, body {
   height: 100%;
@@ -21,7 +21,7 @@ body {
   height: 100%;
   min-height: 100%;
   -webkit-font-smoothing: subpixel-antialiased;
-  background-image: url("../images/rw-willy.jpg");
+  background-image: url("/images/bg_2017.png");
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
@@ -62,7 +62,7 @@ a {
 }
 
 a:hover {
-  color: #ff5853;
+  color: #ff5800;
 }
 
 article a {
@@ -88,7 +88,7 @@ a[ui-sref] {
 }
 
 .navbar-inverse {
-  background-color: #251624;
+  background-color: #251600;
   box-shadow: 0px 0px 38px 0px rgba(0, 0, 0, 0.85);
 }
 
