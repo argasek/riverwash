@@ -116,7 +116,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
 
     function getApiEndpoint($stateParams) {
         var lang = getSupportedLanguage($stateParams.lang, defaultLanguage);
-        var api = 'http://api.riverwash.org';
+        var api = 'https://api.riverwash.org';
 
         if (location.host === 'localhost:8000') {
             api = 'http://api-riverwash.local:8080';
