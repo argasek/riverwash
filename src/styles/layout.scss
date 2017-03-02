@@ -93,7 +93,7 @@ a[ui-sref] {
 }
 
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-  background-color: #436;
+  background-color: #640;
 }
 
 .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
@@ -197,7 +197,7 @@ a[ui-sref] {
 
 @media (max-width: 1023px) {
   .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-    background-color: #342121;
+    background-color: #342100;
   }
   .navbar-inverse {
     background-color: rgba(37, 22, 22, 0.97);

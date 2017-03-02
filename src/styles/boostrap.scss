@@ -34,15 +34,15 @@ $grid-float-breakpoint: 1024px;
 }
 
 .dropdown-menu {
-  background-color: #251625
+  background-color: #251600;
 }
 
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-  background-color: #251625;
+  background-color: #251600;
 }
 
 .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a{
-  background-color: #342134;
+  background-color: #342100;
   color: #fff;
 }
 
@@ -52,7 +52,7 @@ $grid-float-breakpoint: 1024px;
 .dropdown-menu > .active > a:focus,
 .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
 .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
-  background-color: #681368;
+  background-color: #681300;
 }
 
 .navbar-inverse {
@@ -74,17 +74,17 @@ $grid-float-breakpoint: 1024px;
 .dropdown-menu {
   border: 1px solid rgba(0, 0, 0, 0.85);
   box-shadow: 0px 0px 38px 0px rgba(0, 0, 0, 0.85);
-  border-top: 0
+  border-top: 0;
 }
 
 .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
 .dropdown-menu > .active > a {
-  background-color: #636;
+  background-color: #630;
   color: #fff;
 }
 
 .dropdown-menu .divider {
-  background-color: #584848;
+  background-color: #584800;
 }
 
 .registration-form.ng-hide {
