@@ -1,12 +1,16 @@
-$text-color: #ae9d00;
-$header-color: lighten(adjust-hue($text-color, 10), 22);
-$header-color-darker: lighten(adjust-hue($text-color, 20), 22);
-$anchor-color: lighten($text-color, 15);
+$text-color: #c3b58a;
+$navbar-color: #d8a96f;
+$navbar-color-lighter: #f4e6b9;
+$header-color: #ffba5f;
+$header-color-darker: #e28e30;
+$anchor-color: #ffc104;
 $anchor-hover-color: saturate($anchor-color, 10);
-$lead-color-first: #cc4500;
-$lead-color-second: #d44500;
-$lead-color-first-darker: #a52400;
+$lead-color-first: #ff4a00;
+$lead-color-second: #f04c00;
+$lead-color-first-darker: #da3000;
 $lead-color-first-darkest: #711a00;
+
+$article-background-color: rgba(43, 26, 26, 0.9);
 
 html, body {
   height: 100%;
@@ -17,7 +21,7 @@ body {
   text-rendering: optimizeLegibility;
   color: $text-color;
   margin: 0;
-  background-color: #15161a;
+  background-color: #39261B;
   height: 100%;
   min-height: 100%;
   -webkit-font-smoothing: subpixel-antialiased;
@@ -45,15 +49,16 @@ b {
 
 h1 {
   color: $header-color;
+  text-shadow: 1px 1px 2px darken($header-color, 20);
 }
 
 h2 {
   color: $header-color-darker;
+  text-shadow: 1px 1px 2px darken($header-color-darker, 20);
 }
 
 h1, h2, h3 {
   font-family: "Oswald", sans-serif;
-  text-shadow: 1px 1px 2px ;
   margin-bottom: 20px
 }
 
@@ -90,11 +95,31 @@ a[ui-sref] {
 .navbar-inverse {
   background-color: #251600;
   box-shadow: 0px 0px 38px 0px rgba(0, 0, 0, 0.85);
+  .navbar-nav {
+    .active {
+       a, a:hover, a:focus {
+        background-color: #640;
+      }
+    }
+    li {
+      a {
+        color: $navbar-color;
+      }
+      a:hover {
+        color: $navbar-color-lighter;
+      }
+    }
+    .open {
+      a {
+        color: $navbar-color;
+      }
+      a:hover {
+        color: $navbar-color-lighter;
+      }
+    }
+  }
 }
 
-.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-  background-color: #640;
-}
 
 .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
   max-height: none;
@@ -149,7 +174,7 @@ a[ui-sref] {
   border-top-width: 0;
   border-bottom-width: 0;
   display: block;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: $article-background-color;
   @media (max-width: 768px) {
     min-width: 100%;
   }
