@@ -1,6 +1,6 @@
 $text-color: #ae9d00;
-$header-color: lighten(adjust_hue($text-color, 10), 22);
-$header-color-darker: lighten(adjust_hue($text-color, 20), 15);
+$header-color: lighten(adjust-hue($text-color, 10), 22);
+$header-color-darker: lighten(adjust-hue($text-color, 20), 22);
 $anchor-color: lighten($text-color, 15);
 $anchor-hover-color: saturate($anchor-color, 10);
 $lead-color-first: #cc4500;
