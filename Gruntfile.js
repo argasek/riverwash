@@ -8,6 +8,7 @@ module.exports = function(grunt) {
         tasks: 'src/tasks',
         styles: 'src/styles',
         images: 'src/images',
+        dbuser: 'src/dbuser',
         modules: 'node_modules',
         app: 'src',
         dist: 'dist',
