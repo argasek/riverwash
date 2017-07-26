@@ -53,7 +53,7 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
         ABOUT: 'About',
         PARTY: 'Party information',
         COMPETITIONS: 'Competitions & rules',
-        PARTICIPANTS: 'Create account',
+        PARTICIPANTS: 'Sign up',
         SCHEDULE: 'Schedule',
         TICKETS: 'Tickets',
         TRAVELLING: 'Travelling & Accommodation',
@@ -116,10 +116,10 @@ application.config(function ($stateProvider, $urlRouterProvider, $locationProvid
 
     function getApiEndpoint($stateParams) {
         var lang = getSupportedLanguage($stateParams.lang, defaultLanguage);
-        var api = 'https://api.riverwash.org';
+        var api = 'https://riverwash.org';
 
         if (location.host === 'localhost:8000') {
-            api = 'http://api-riverwash.local:8080';
+            api = 'http://localhost:8000';
         }
         return {
             api: api,

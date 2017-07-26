@@ -135,6 +135,8 @@ ServerSignature Off
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
+RewriteRule ^users(\/)? /dbuser/users.php [QSA,L]
+RewriteRule ^user(\/)? /dbuser/user.php [QSA,L]
 RewriteRule ^index\.html$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
