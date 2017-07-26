@@ -12,25 +12,23 @@ if ($mysqli->connect_errno) {
 	echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
 
-$query = ("SELECT `id`, `handle`, `group`, `country` from $dbtable ORDER BY `id`");
-
+$query = ("SELECT `id`, `handle`, `group`, `country`, `email` from $dbtable ORDER BY `id`");
 $result = $mysqli->query($query);
-
-//$row = $result->fetch_array(MYSQLI_ASSOC);
 
 $array_data = array();
 
 while($row = $result->fetch_row()) {
-	array_push($array_data, array('handle' => $row[1], 'group' => $row[2], 'country' => $row[3]));
+	$default = 'retro';
+	$image = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( html_entity_decode($row[4]) ) ) ) . "?d=" . urlencode( $default ) . "&s=40&r=x";
+	array_push($array_data, array('handle' => html_entity_decode($row[1]), 'group' => html_entity_decode($row[2]), 'country' => html_entity_decode($row[3]), 'image' => $image));
 }
 
-$data = array('code' => 200, 'success' => true, 'data' => $array_data);
+$data = array('success' => true, 'data' => $array_data);
 
 header('Content-Type: application/json');
 echo json_encode($data);
 
 mysqli_free_result($result);
-mysqli_close($link);
+mysqli_close($mysqli);
 
 exit(0);
-?>

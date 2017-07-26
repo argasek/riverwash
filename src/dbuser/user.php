@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $handle = test_input($_POST["handle"]);
   $ip = test_input($_SERVER['REMOTE_ADDR']);
 
-  if ( $country !== '' && $email !== '' && $group !== '' && $handle !== '' ) {
+  if ( $country !== '' && $email !== '' && $handle !== '' ) {
 
 	$mysqli = new mysqli("localhost", $dbuser, $dbpass, $dbname);
 
@@ -22,22 +22,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 	}
 
+	if ( $group === '' ) { $group == NULL; }
+
 	if (!$mysqli->query("INSERT INTO `$dbtable`(`country`,`email`,`group`,`handle`,`ip`) VALUES ('$country', '$email', '$group', '$handle', '$ip')")) {
 
 		$data = array('code' => 503, 'success' => false, 'message' => 'There was an error saving your data, please contact support. Error ' . $mysqli->errno);
 		header('Content-Type: application/json');
 		echo json_encode($data);
 
-		mysqli_close($link);
+		mysqli_close($mysqli);
 		exit(0);
 
 	} else {
 		
-		$data = array('success' => true, 'message' => 'Thanks for registering!');
+		$data = array('success' => true, 'message' => 'Thanks for registering!', 'data' => array('handle' => $handle, 'group' => $group, 'country' => $country) );
 		header('Content-Type: application/json');
 		echo json_encode($data);
 	
-		mysqli_close($link);
+		mysqli_close($mysqli);
 		exit(0);
 
 	}
@@ -48,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	header('Content-Type: application/json');
 	echo json_encode($data);
 
-	mysqli_close($link);
+	mysqli_close($mysqli);
 	exit(0);
   }
 
@@ -60,5 +62,3 @@ function test_input($data) {
   $data = htmlspecialchars($data);
   return $data;
 }
-
-?>
