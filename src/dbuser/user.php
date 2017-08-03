@@ -2,7 +2,7 @@
 $dbuser  = '';
 $dbpass  = '';
 $dbname  = '';
-$dbtable = 'visitors';
+$dbtable = '';
 
 $country = $email = $group = $handle = $ip = "";
 

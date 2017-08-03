@@ -2,7 +2,8 @@
 $dbuser  = '';
 $dbpass  = '';
 $dbname  = '';
-$dbtable = 'visitors';
+$dbtable = '';
+$default = 'retro';
 
 header("HTTP/1.0 200 OK");
 
@@ -18,7 +19,6 @@ $result = $mysqli->query($query);
 $array_data = array();
 
 while($row = $result->fetch_row()) {
-	$default = 'retro';
 	$image = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( html_entity_decode($row[4]) ) ) ) . "?d=" . urlencode( $default ) . "&s=40&r=x";
 	array_push($array_data, array('handle' => html_entity_decode($row[1]), 'group' => html_entity_decode($row[2]), 'country' => html_entity_decode($row[3]), 'image' => $image));
 }
