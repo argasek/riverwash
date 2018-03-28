@@ -1,9 +1,9 @@
-$text-color: #c3b58a;
-$navbar-color: #d8a96f;
-$navbar-color-lighter: #f4e6b9;
-$header-color: #ffba5f;
-$header-color-darker: #e28e30;
-$anchor-color: #ffc104;
+$text-color: #000;
+$navbar-color: #c00;
+$navbar-color-lighter: #f00;
+$header-color: #00c;
+$header-color-darker: #009;
+$anchor-color: #00c;
 $anchor-hover-color: saturate($anchor-color, 10);
 $lead-color-first: #ff4a00;
 $lead-color-second: #f04c00;
@@ -21,11 +21,11 @@ body {
   text-rendering: optimizeLegibility;
   color: $text-color;
   margin: 0;
-  background-color: #39261B;
+  background-color: #fff;
   height: 100%;
   min-height: 100%;
   -webkit-font-smoothing: subpixel-antialiased;
-  background-image: url("/images/bg_2017.png");
+  //background-image: url("/images/bg_2018.png");
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
@@ -43,9 +43,9 @@ article strong {
   color: $lead-color-first-darker;
 }
 
-b {
-  color: #ddd;
-}
+//b {
+//  color: #ddd;
+//}
 
 h1 {
   color: $header-color;
@@ -63,11 +63,11 @@ h1, h2, h3 {
 }
 
 a {
-  color: #cd4843;
+  color: $anchor-color;
 }
 
 a:hover {
-  color: #ff5800;
+  color: $anchor-hover-color;
 }
 
 article a {
@@ -76,7 +76,7 @@ article a {
 }
 
 article a:hover {
-  color: #fff;
+  color: $anchor-hover-color;
 }
 
 a[ui-sref] {
