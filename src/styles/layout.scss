@@ -10,7 +10,7 @@ $lead-color-second: #f04c00;
 $lead-color-first-darker: #da3000;
 $lead-color-first-darkest: #711a00;
 
-$article-background-color: rgba(43, 26, 26, 0.9);
+$article-background-color: rgba(255, 255, 255, 0.8);
 
 html, body {
   height: 100%;
@@ -25,7 +25,7 @@ body {
   height: 100%;
   min-height: 100%;
   -webkit-font-smoothing: subpixel-antialiased;
-  //background-image: url("/images/bg_2018.png");
+  background-image: url("/images/logo_2018.png");
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
@@ -139,7 +139,7 @@ a[ui-sref] {
 .ui-info {
   font-family: "Oswald", sans-serif;
   padding: 1em;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   border: 1px solid $text-color;
   border-left-width: 0;
   border-right-width: 0;
@@ -225,7 +225,7 @@ a[ui-sref] {
     background-color: #342100;
   }
   .navbar-inverse {
-    background-color: rgba(37, 22, 22, 0.97);
+    background-color: rgba(255, 255, 255, 0.9);
   }
   .ui-view-container {
     padding-left: 0;
