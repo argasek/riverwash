@@ -1,16 +1,16 @@
 $text-color: #000;
-$navbar-color: #c00;
-$navbar-color-lighter: #f00;
-$header-color: #00c;
-$header-color-darker: #009;
-$anchor-color: #00c;
-$anchor-hover-color: saturate($anchor-color, 10);
-$lead-color-first: #ff4a00;
-$lead-color-second: #f04c00;
-$lead-color-first-darker: #da3000;
-$lead-color-first-darkest: #711a00;
+$navbar-color: white;
+$navbar-color-lighter: white;
+$header-color: #214B98;
+$header-color-darker: #214B98;
+$anchor-color: #214B98;
+$anchor-hover-color: saturate($anchor-color, 20);
+$lead-color-first: #214B98;
+$lead-color-second: #214B98;
+$lead-color-first-darker: #214B98;
+$lead-color-first-darkest: #214B98;
 
-$article-background-color: rgba(255, 255, 255, 0.8);
+$article-background-color: rgba(255, 255, 255, .9);
 
 html, body {
   height: 100%;
@@ -26,7 +26,7 @@ body {
   min-height: 100%;
   -webkit-font-smoothing: subpixel-antialiased;
   background-image: url("/images/logo_2018.png");
-  background-size: cover;
+  background-size: 777px;
   background-position: top center;
   background-repeat: no-repeat;
 }
@@ -93,12 +93,12 @@ a[ui-sref] {
 }
 
 .navbar-inverse {
-  background-color: #251600;
+  background-color: rgba(33, 75, 152, 0.9);
   box-shadow: 0px 0px 38px 0px rgba(0, 0, 0, 0.85);
   .navbar-nav {
     .active {
        a, a:hover, a:focus {
-        background-color: #640;
+        background-color: rgba(22, 51, 100, 1);
       }
     }
     li {
@@ -139,7 +139,7 @@ a[ui-sref] {
 .ui-info {
   font-family: "Oswald", sans-serif;
   padding: 1em;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid $text-color;
   border-left-width: 0;
   border-right-width: 0;
@@ -203,7 +203,7 @@ a[ui-sref] {
 .angular-google-map-container {
   width: 100%;
   height: 200px;
-  border: 10px solid #fff;
+  border: 10px solid #163364;
   box-shadow: 0 0 5px #ccc;
   margin-bottom: 0.5em;
   margin-left: auto;
@@ -222,10 +222,10 @@ a[ui-sref] {
 
 @media (max-width: 1023px) {
   .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-    background-color: #342100;
+    background-color: rgba(22, 51, 100, 0.95);
   }
   .navbar-inverse {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
   }
   .ui-view-container {
     padding-left: 0;
