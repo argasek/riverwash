@@ -20,7 +20,7 @@
     "angular-ui-router": "^0.2.18",
     "bootstrap-sass": "^3.3.6",
     "imagesloaded": "^4.1.0",
-    "jquery": "^2.1.4",
+    "jquery": "^2.2.4",
     "lodash": "^4.3.0"
   },
   "devDependencies": {
